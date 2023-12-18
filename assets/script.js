@@ -30,7 +30,7 @@ function search() {
             for (var i=0; i < 6; i++) {
                 document.getElementById("forecast").innerHTML += 
                 "<p>" + json.list[i].dt_txt + "</p><br><p>" + json.list[i].main.temp + " degrees</p><br><p>" + json.list[i].wind.speed + " mph</p><br><p>" + json.list[i].main.humidity + "%</p>"
-                // 0, 7, 15, 23, 31, 39
+                // 0, 7, 15, 23, 31, 39 where 7n+(n-1)
             }
         });
 
