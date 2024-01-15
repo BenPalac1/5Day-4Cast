@@ -18,6 +18,7 @@ function search() {
         lat = json[0].lat;
         lon = json[0].lon;
         console.log(lat, lon);
+        console.log(json);
  
         var forecastQuery = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
 
@@ -26,11 +27,23 @@ function search() {
 
         }).then(function(json) {
             console.log(json);
+            console.log(json.list.length)
 
-            for (var i=0; i < 6; i++) {
-                document.getElementById("forecast").innerHTML += 
-                "<p>" + json.list[i].dt_txt + "</p><br><p>" + json.list[i].main.temp + " degrees</p><br><p>" + json.list[i].wind.speed + " mph</p><br><p>" + json.list[i].main.humidity + "%</p>"
-                // 0, 7, 15, 23, 31, 39 where 7n+(n-1)
+            // // City
+            // document.getElementById("city").innerHTML = city + " (" + json.list[0].dt_txt + ")";
+
+            // // Current Temp
+            // document.getElementById("temp0").innerHTML = json.list[0].main.temp + "&#x2109;";
+
+            // // Humidity
+            // document.getElementById("humid0").innerHTML = json.list[0].main.humidity + "&percnt;";
+
+            // //Wind Speed
+            // document.getElementById("wind0").innerHTML = json.list[0].wind.speed + "mph";
+ 
+            for (var i=0; i < json.list.length + 1; i+=8) {
+                console.log(i);
+                document.getElementById("temp" + i).innerHTML = json.list[i].main.temp + "&#x2109;";            
             }
         });
 
@@ -53,7 +66,6 @@ function search() {
 // append date, icon, temp, wind speed, and humidity to one box per day
 
 //  make each search history entry clickable
-
 
 
 
