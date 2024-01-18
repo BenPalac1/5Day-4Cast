@@ -20,31 +20,55 @@ function search() {
         console.log(lat, lon);
         console.log(json);
  
-        var forecastQuery = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
+        var currentQuery = "https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
 
-        fetch(forecastQuery).then((response) => {
+        fetch(currentQuery).then((response) => {
             return(response.json());
 
         }).then(function(json) {
             console.log(json);
-            console.log(json.list.length)
+
+            console.log(json.main.temp);
+            console.log(json.main.humidity);
+            console.log(json.wind.speed);
+            let currentDate = new Date(json.dt * 1000).toDateString();
+            console.log(currentDate);
 
             // // City
-            // document.getElementById("city").innerHTML = city + " (" + json.list[0].dt_txt + ")";
+            document.getElementById("city").innerHTML = city + " (" + currentDate + ")";
 
             // // Current Temp
-            // document.getElementById("temp0").innerHTML = json.list[0].main.temp + "&#x2109;";
+            document.getElementById("temp0").innerHTML = json.main.temp + "&#x2109;";
 
             // // Humidity
-            // document.getElementById("humid0").innerHTML = json.list[0].main.humidity + "&percnt;";
+            document.getElementById("humid0").innerHTML = json.main.humidity + "&percnt;";
 
             // //Wind Speed
-            // document.getElementById("wind0").innerHTML = json.list[0].wind.speed + "mph";
- 
-            for (var i=0; i < json.list.length + 1; i+=8) {
-                console.log(i);
-                document.getElementById("temp" + i).innerHTML = json.list[i].main.temp + "&#x2109;";            
-            }
+            document.getElementById("wind0").innerHTML = json.wind.speed + " mph";
+
+
+
+            var forecastQuery = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
+
+            fetch(forecastQuery).then((response) => {
+                return(response.json());
+    
+            }).then(function(json) {
+                console.log(json);
+
+                for (var i=0; i < json.list.length; i+=8) {
+                    console.log(i);
+
+                    console.log(json.list[i].main.temp + "&#x2109;");
+
+
+                    console.log(json.list[i].main.humidity + "&percnt;" );
+
+
+                    console.log(json.list[i].wind.speed + " mph");        
+                }
+
+            });
         });
 
    });
