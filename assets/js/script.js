@@ -9,7 +9,7 @@ let lon = "";
 // user searches for a city
 function search() {
     city = document.getElementById("citySearch").value;
-    var geoQuery = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey;
+    var geoQuery = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey; // geoQuery pulls lat and lon
 
     fetch(geoQuery).then((response) => {
         return(response.json());
@@ -17,8 +17,6 @@ function search() {
     }).then(function(json) {
         lat = json[0].lat;
         lon = json[0].lon;
-        console.log(lat, lon);
-        console.log(json);
  
         var currentQuery = "https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
 
@@ -28,26 +26,14 @@ function search() {
         }).then(function(json) {
             console.log(json);
 
-            console.log(json.main.temp);
-            console.log(json.main.humidity);
-            console.log(json.wind.speed);
             let currentDate = new Date(json.dt * 1000).toDateString();
-            console.log(currentDate);
+            console.log(currentDate); // "coord" in log
 
-            // // City
-            document.getElementById("city").innerHTML = city + " (" + currentDate + ")";
-
-            // // Current Temp
-            document.getElementById("temp0").innerHTML = json.main.temp + "&#x2109;";
-
-            // // Humidity
-            document.getElementById("humid0").innerHTML = json.main.humidity + "&percnt;";
-
-            // //Wind Speed
-            document.getElementById("wind0").innerHTML = json.wind.speed + " mph";
+            // Current weather nested here
+            document.getElementById("currentWeather").innerHTML = '<h2 id="city"> ' + city + ' ' + currentDate + '</h2><article class="card-column"><figure class="card-block"><p id="day0"></p><p>Temperature: ' + json.main.temp + '&#x2109;</p><p>Humidity: ' + json.main.humidity + '&percnt;</p><p>Wind: ' + json.wind.speed + ' mph</p></figure></article>'
 
 
-
+            // forecast query nested inside of current query
             var forecastQuery = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
 
             fetch(forecastQuery).then((response) => {
@@ -57,22 +43,13 @@ function search() {
                 console.log(json);
 
                 for (var i=0; i < json.list.length; i+=8) {
-                    console.log(i);
-
-                    console.log(json.list[i].main.temp + "&#x2109;");
-
-
-                    console.log(json.list[i].main.humidity + "&percnt;" );
-
-
-                    console.log(json.list[i].wind.speed + " mph");        
+                    console.log(i); // "cod" in log list of 40 objects 
+                    
+                    document.getElementById("forecastBlocks").innerHTML += '<article class="card-col-2"><figure id="day1" class="border p-3"><h3 class="header-block">' + json.list[i].dt_txt + '</h3><aside class="weather-block"><p id="day1"></p><p id="city"></p><p>Temperature: ' + json.list[i].main.temp + '&#x2109;</p><p id="humid1">Humidity: ' + json.list[i].main.humidity + '&percnt;</p><p id="wind1">Wind: ' + json.list[i].wind.speed + ' mph</p></aside></figure></article>';
                 }
-
             });
         });
-
    });
-
 };
 
 // get lat and lon of that city
