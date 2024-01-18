@@ -8,6 +8,7 @@ let lon = "";
 
 // user searches for a city
 function search() {
+    document.getElementById("forecastBlocks").innerHTML = '';  // clears forecast blocks upon a new search
     city = document.getElementById("citySearch").value;
     var geoQuery = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey; // geoQuery pulls lat and lon
 
