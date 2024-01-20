@@ -3,6 +3,7 @@ var searchButton = document.getElementById("search");
 var APIkey= "d9b4f68d798be0a14075fd03f0135394";
 let lat = "";
 let lon = "";
+var searchHistory = [];
 
 
 
@@ -61,26 +62,37 @@ function search() {
                     
                     document.getElementById("forecastBlocks").innerHTML += '<article class="card-col-2"><figure id="day1" class="border p-3"><h3 class="header-block">' + formattedDate + '</h3><aside class="weather-block"><img src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png" alt="' + json.list[i].weather[0].description + '"><p>Temperature: ' + json.list[i].main.temp + '&#x2109;</p><p id="humid1">Humidity: ' + json.list[i].main.humidity + '&percnt;</p><p id="wind1">Wind: ' + json.list[i].wind.speed + ' mph</p></aside></figure></article>';
                 }
+
+                if (!searchHistory.includes(city)) {
+                    searchHistory.push(city);
+                    updateSearchHistory();
+                }
+
             });
-        });
+        }); 
    });
 };
 
-// get lat and lon of that city
-// call geocoding API
-// use those two variables to get current weather
-// call forcast API
-// and to get the 5-day forecast
+function updateSearchHistory() {
+    var searchHistoryList = document.getElementById("searchHistoryList");
+    searchHistoryList.innerHTML = '';  // Clear the previous list
 
-// add city to search history
+    // Update the list with search history
+    searchHistory.forEach(function(searchItem) {
+        var listItem = document.createElement("li");
+        listItem.textContent = searchItem;
 
+        listItem.addEventListener("click", function() {
+            // Set the search input to the clicked history item
+            document.getElementById("citySearch").value = searchItem;
+            // Perform the search again
+            search();
+        });
 
-// append the name, date, icon, temp, humidity, and wind speed to the page
+        searchHistoryList.appendChild(listItem);
+    });
+}
 
-// get the 5-day forecast
-// append date, icon, temp, wind speed, and humidity to one box per day
-
-//  make each search history entry clickable
 
 
 
