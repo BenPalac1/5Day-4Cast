@@ -1,5 +1,4 @@
 #forecast {
-
     padding-top: 5%;
 }
 
@@ -7,16 +6,21 @@
     display: flex;
     flex-direction: grid;
     justify-content: space-between;
-    padding-bottom: 25%;
 }
 
 #currentWeather {
     background-color: antiquewhite;
+    border-radius: 10px;
+    margin-right: 45%;
+    margin-left: -2%;
+    padding: 29px;
 }
 
 
 #day1 {
     background-color: antiquewhite;
+    border-radius: 10px;
+    margin: -15%;
 }
 
 h1 {
@@ -63,10 +67,16 @@ footer {
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background-image: url('../../assets/images/bmoresky.jpg');
     /* background-image: url('../../assets/images/more-pedals.jpg'); */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
 }
 
