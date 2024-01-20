@@ -31,7 +31,7 @@ function search() {
             console.log(currentDate); // "coord" in log
 
             // Current weather nested here
-            document.getElementById("currentWeather").innerHTML = '<h2 id="city"> ' + city + ' ' + currentDate + '</h2><h4><article class="card-column"><figure class="card-block"><img src="http://openweathermap.org/img/w/' + json.weather[0].icon + '.png" alt="' + json.weather[0].description + '"><p>Temperature: ' + json.main.temp + '&#x2109;</p><p>Humidity: ' + json.main.humidity + '&percnt;</p><p>Wind: ' + json.wind.speed + ' mph</p></figure></article></h4>'
+            document.getElementById("currentWeather").innerHTML = '<h2 id="city"> ' + city + ' ' + currentDate + '</h2><h4><article class="card-column"><figure class="card-block"><img src="https://openweathermap.org/img/w/' + json.weather[0].icon + '.png" alt="' + json.weather[0].description + '"><p>Temperature: ' + json.main.temp + '&#x2109;</p><p>Humidity: ' + json.main.humidity + '&percnt;</p><p>Wind: ' + json.wind.speed + ' mph</p></figure></article></h4>'
 
 
             // forecast query nested inside of current query
@@ -58,7 +58,7 @@ function search() {
                     // Format the date as "M/DD/YYYY"
                     var formattedDate = month + '/' + day + '/' + year;
                     
-                    document.getElementById("forecastBlocks").innerHTML += '<article class="card-col-2"><figure id="day1" class="border p-3"><h3 class="header-block">' + formattedDate + '</h3><aside class="weather-block"><img src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png" alt="' + json.list[i].weather[0].description + '"><p>Temperature: ' + json.list[i].main.temp + '&#x2109;</p><p id="humid1">Humidity: ' + json.list[i].main.humidity + '&percnt;</p><p id="wind1">Wind: ' + json.list[i].wind.speed + ' mph</p></aside></figure></article>';
+                    document.getElementById("forecastBlocks").innerHTML += '<article class="card-col-2"><figure id="day1" class="border p-3"><h3 class="header-block">' + formattedDate + '</h3><aside class="weather-block"><img src="https://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png" alt="' + json.list[i].weather[0].description + '"><p>Temperature: ' + json.list[i].main.temp + '&#x2109;</p><p id="humid1">Humidity: ' + json.list[i].main.humidity + '&percnt;</p><p id="wind1">Wind: ' + json.list[i].wind.speed + ' mph</p></aside></figure></article>';
                 }
 
                 if (!searchHistory.includes(city)) {
