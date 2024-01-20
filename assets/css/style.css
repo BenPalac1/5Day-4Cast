@@ -77,6 +77,27 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    
 }
 
+#searchButton:hover {
+    background-color: #e98615;
+}
+
+#searchHistoryList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#searchHistoryList li {
+    cursor: pointer;
+    padding: 8px;
+    margin: 4px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#searchHistoryList li:hover {
+    background-color: #e98615;
+}
