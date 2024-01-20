@@ -1,10 +1,10 @@
 let city = "";
-var searchButton = document.getElementById("search");
+var searchButton = document.getElementById("searchButton");
 var APIkey= "d9b4f68d798be0a14075fd03f0135394";
 let lat = "";
 let lon = "";
-var searchHistory = [];
 
+var searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
 
 
 // user searches for a city
@@ -66,6 +66,7 @@ function search() {
                 if (!searchHistory.includes(city)) {
                     searchHistory.push(city);
                     updateSearchHistory();
+                    saveSearchHistory();
                 }
 
             });
@@ -91,7 +92,15 @@ function updateSearchHistory() {
 
         searchHistoryList.appendChild(listItem);
     });
-}
+};
+
+function saveSearchHistory() {
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+};
+
+window.addEventListener('load', function() {
+    updateSearchHistory();
+});
 
 
 
