@@ -1,11 +1,72 @@
+#forecast {
+    padding-top: 5%;
+}
+
 #forecastBlocks {
     display: flex;
     flex-direction: grid;
     justify-content: space-between;
+    padding-bottom: 25%;
+}
+
+#currentWeather {
+    background-color: antiquewhite;
+}
+
+
+#day1 {
+    background-color: antiquewhite;
 }
 
 h1 {
     padding: 0.5rem;
     text-align: center;
     padding-right: 20%;
+    text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white, 
+    -1px 1px 0 white, 
+    1px 1px 0 white;
 }
+
+h2 {
+    text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white, 
+    -1px 1px 0 white, 
+    1px 1px 0 white;
+}
+
+h3 {
+    text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white, 
+    -1px 1px 0 white, 
+    1px 1px 0 white;
+  
+}
+
+header {
+    background-color: rgb(96, 151, 153);
+    background-size: cover; 
+ }
+  
+footer {
+    position: fixed; /* or use 'position: absolute;' if you want it absolute at the bottom */
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(96, 151, 153);
+    padding: 10px;
+    text-align: center;
+    height: 10vh;
+}
+
+body {
+    background-image: url('../../assets/images/thumb-1920-646566.jpg');
+    /* background-image: url('../../assets/images/more-pedals.jpg'); */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+assets/images/thumb-1920-646566.jpg
