@@ -54,7 +54,7 @@ h3 {
 header {
     background-color: rgb(96, 151, 153);
     background-size: cover; 
- }
+}
   
 footer {
     position: fixed; /* or use 'position: absolute;' if you want it absolute at the bottom */

@@ -3,9 +3,7 @@ var searchButton = document.getElementById("searchButton");
 var APIkey= "d9b4f68d798be0a14075fd03f0135394";
 let lat = "";
 let lon = "";
-
 var searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-
 
 // user searches for a city
 function search() {
@@ -68,7 +66,6 @@ function search() {
                     updateSearchHistory();
                     saveSearchHistory();
                 }
-
             });
         }); 
    });
