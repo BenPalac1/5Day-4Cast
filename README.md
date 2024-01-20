@@ -46,6 +46,12 @@ THEN I am again presented with current and future conditions for that city
 <br>
 <br>
 
+## Link to Deployed App:
+
+https://benpalac1.github.io/5Day-4Cast/
+<br>
+<br>
+
 ## Instructions for Use:
     1.) Click the link to the deployed app.
     2.) Type a city into the search bar and click the `search` button.
